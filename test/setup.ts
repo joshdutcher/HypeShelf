@@ -38,13 +38,9 @@ vi.mock("@clerk/nextjs", () => ({
       fullName: "Test User",
     },
   }),
-  SignInButton: ({ children }: { children: React.ReactNode }) => (
-    <div data-testid="sign-in-button">{children}</div>
-  ),
-  SignOutButton: ({ children }: { children: React.ReactNode }) => (
-    <div data-testid="sign-out-button">{children}</div>
-  ),
-  ClerkProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  SignInButton: vi.fn(({ children }) => children),
+  SignOutButton: vi.fn(({ children }) => children),
+  ClerkProvider: vi.fn(({ children }) => children),
 }));
 
 // Mock Convex
@@ -55,7 +51,5 @@ vi.mock("convex/react", () => ({
 }));
 
 vi.mock("convex/react-clerk", () => ({
-  ConvexProviderWithClerk: ({ children }: { children: React.ReactNode }) => (
-    <>{children}</>
-  ),
+  ConvexProviderWithClerk: vi.fn(({ children }) => children),
 }));
